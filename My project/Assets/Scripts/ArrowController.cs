@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,25 @@ using UnityEngine;
 public class ArrowController : MonoBehaviour
 {
     private Rigidbody2D rb2d2; //declare rigidbody2d variable + give name
+    
+    public static ArrowController Instance; 
 
     public float forceAmount2 = 10; //declare forceAmount variable
     // Start is called before the first frame update
+
+    private void Awake() //called before the scene has loaded
+    {
+        if (Instance == null) //if instance hasn't been set
+        {
+            DontDestroyOnLoad(gameObject); //don't destroy the gameobject
+            Instance = this;  //and set it to this
+        }
+        else
+        {
+            Destroy(gameObject); //when it's been set to this, destroy all other gameobjects
+        }
+    }
+
     void Start()
     {
         rb2d2 = GetComponent<Rigidbody2D>(); //determine content of rb2d2
