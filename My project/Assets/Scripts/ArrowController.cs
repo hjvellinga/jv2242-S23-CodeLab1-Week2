@@ -37,6 +37,10 @@ public class ArrowController : MonoBehaviour
         {
             rb2d2.AddForce(Vector2.left*forceAmount2);
         }
+        else
+        {
+            rb2d2.velocity = Vector2.zero;
+        }
         rb2d2.velocity *= 0.999f;
     }
 }

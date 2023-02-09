@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &16052805
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -5328,9 +5328,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcc84b95ada213f4ebda84ca21b2e3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalPosPl1: {x: 0, y: 0}
-  Player2: {fileID: 1672604113}
-  originalPosPl2: {x: 7.21, y: -3.81}
+  gameManager: {fileID: 0}
+  myManager: {fileID: 0}
 --- !u!1 &1344150790
 GameObject:
   m_ObjectHideFlags: 0
@@ -8952,7 +8951,8 @@ ParticleSystem:
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
     multiplyColliderForceByCollisionAngle: 1
-    m_Planes: []
+    m_Planes:
+    - {fileID: 846908338}
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
@@ -10188,6 +10188,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7439776082391f4d9150f66d2705dd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playersCollided: 0
+  currentLevel: 0
+  playerOne: {fileID: 846908334}
+  playerTwo: {fileID: 1672604113}
+  originalPosPl1: {x: 0, y: 0}
+  originalPosPl2: {x: 0, y: 0}
 --- !u!4 &1586060152
 Transform:
   m_ObjectHideFlags: 0

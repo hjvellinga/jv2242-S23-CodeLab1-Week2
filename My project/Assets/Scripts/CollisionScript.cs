@@ -10,19 +10,12 @@ public class CollisionScript : MonoBehaviour
     // Start is called before the first frame update
     
     //declare variable original position player 1
-    public Vector2 originalPosPl1;
-    //declare game object player 2?
-    public GameObject Player2;
-    //declare variable original position player 2
-    public Vector2 originalPosPl2; 
+    //declare game manager holder object and then the game manager script
+    public GameObject gameManager;
+    public GameManager myManager;
     void Start()
     {
-        //set Player2
-        Player2 = GameObject.Find("Player2"); //find the game object named "player2" in the scene ASK SOMEONE FOR HELP!!
-        //set originalPos player1 & player 2
-
-        originalPosPl1 = gameObject.transform.position;
-        originalPosPl2 = Player2.transform.position;
+        FindManager();
     }
 
     // Update is called once per frame
@@ -33,20 +26,25 @@ public class CollisionScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.name == "Player2")
+        if (col.transform.tag == "Player")
             
         {
-            //BUT ONLY ON COLLISION?!?
-            //GetComponent <ParticleSystem>().Play ();
-            //ParticleSystem.EmissionModule em = GetComponent<ParticleSystem>().emission;
-            //em.enabled = true;
-            //
-            
-            SceneManager.LoadScene("Level2");
-            gameObject.transform.position = originalPosPl1; //reset position Player 1.
-           
+
+            Debug.Log("collided with other player");
+            myManager.playersCollided = true; //set bool players collided to true 
             
             
+            
+            GetComponent <ParticleSystem>().Play (); //spawn the particle system! 
+            ParticleSystem.EmissionModule em = GetComponent<ParticleSystem>().emission;
+            em.enabled = true;
+
         }
+    }
+
+    public void FindManager()
+    {
+        gameManager = GameObject.Find("GameManagerHolder"); //set the game manager holder
+        myManager = gameManager.GetComponent<GameManager>();
     }
 }
